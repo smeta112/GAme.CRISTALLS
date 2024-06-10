@@ -9,7 +9,7 @@ class Cristall(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=(x,0))
         self.speed = speed
 
-    def move(self, *args):
+    def update(self, *args):
         if self.rect.y < args[0] - 20:
             self.rect.y += self.speed
         else:
