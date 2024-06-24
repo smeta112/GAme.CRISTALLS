@@ -35,20 +35,16 @@ def create_cristall(group):
     return Cristall(x, speed, cristall_surf[indx], cristall_data[indx]["score"], group)
 
 game_score = 0
-lives_score = 5
 
 def collieCristalls():
     global game_score
-    global  lives_score
     for cristall in cristalls:
         if telega_rect.collidepoint(cristall.rect.center):
             game_score += cristall.score
             cristall.kill()
-        if cristall.rect.y > 405:
-            lives_score -= 1
+        if cristall.rect.y > 475:
+            game_score -= cristall.score
             cristall.kill()
-        #if lives_score == 0:
-
 
 
 
@@ -79,8 +75,8 @@ while True:
     collieCristalls()
     window.blit(bg_image, (0,0))
 
-    lv_text = f.render(str(lives_score), 1, (94, 138, 14))
-    window.blit(lv_text, (20, 10))
+    sc_text = f.render(str(game_score), 1, (94, 138, 14))
+    window.blit(sc_text, (20, 10))
 
     cristalls.draw(window)
 
